@@ -145,6 +145,25 @@
             font-weight: bold;
         }
 
+        .phase-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 3px solid #e91e63;
+        }
+
+        .phase-item h4 {
+            color: #e91e63;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .phase-item p {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
         .controls {
             position: fixed;
             bottom: 30px;
@@ -177,35 +196,6 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 18px;
             z-index: 1000;
-        }
-
-        .framework-diagram {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 40px;
-            border-radius: 16px;
-            margin-top: 30px;
-            font-size: 18px;
-        }
-
-        .flow-item {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-            gap: 20px;
-        }
-
-        .flow-arrow {
-            color: #e91e63;
-            font-size: 28px;
-        }
-
-        .flow-box {
-            background: rgba(233, 30, 99, 0.2);
-            border: 1px solid #e91e63;
-            padding: 12px 20px;
-            border-radius: 8px;
-            flex: 1;
-            color: white;
         }
 
         .impact-grid {
@@ -395,27 +385,29 @@
             </div>
         </div>
 
-        <!-- Slide 3: Desafio -->
+        <!-- Slide 3: Nossa Jornada -->
         <div class="slide dark-bg">
-            <h2>Da Experimentação ao <span class="highlight">Framework</span></h2>
+            <h2>Nossa <span class="highlight">Jornada</span> com IA</h2>
             <div class="columns">
                 <div>
                     <h3>🔬 Fase Experimental</h3>
-                    <ul>
-                        <li>Testar viabilidade técnica de IA na educação.</li>
-                        <li>Validar precisão de diferentes provedores (ASR).</li>
-                        <li>Prototipar soluções de acessibilidade.</li>
-                        <li>Aprender com casos de uso reais.</li>
-                    </ul>
+                    <div class="phase-item">
+                        <h4>Fase 1: PoC de Transcrição (ASR)</h4>
+                        <p>Testar viabilidade e precisão de provedores de reconhecimento de fala.</p>
+                    </div>
+                    <div class="phase-item">
+                        <h4>Fase 2: Player Acessível</h4>
+                        <p>Prototipar solução com avatares Libras e design universal.</p>
+                    </div>
                 </div>
                 <div>
                     <h3>⚙️ Formalização em Software</h3>
-                    <ul>
-                        <li>Transformar metodologia educacional em framework.</li>
-                        <li>Orquestrar múltiplas capacidades de IA.</li>
-                        <li>Criar pipeline escalável e reproduzível.</li>
-                        <li>Elevar qualidade das experiências educacionais.</li>
-                    </ul>
+                    <div class="phase-item" style="border-left-color: #7b2cbf; background: rgba(123, 44, 191, 0.05);">
+                        <h4 style="color: #7b2cbf;">Fase 3: DIO AI Education Framework</h4>
+                        <p>Transformar metodologia em framework escalável.</p>
+                        <p>Orquestrar múltiplas capacidades de IA.</p>
+                        <p>Pipeline reproduzível em produção.</p>
+                    </div>
                 </div>
             </div>
             <p style="margin-top: 50px; font-size: 24px; text-align: center;">
@@ -426,44 +418,7 @@
             </div>
         </div>
 
-        <!-- Slide 4: Jornada -->
-        <div class="slide dark-bg">
-            <h2>Nossa <span class="highlight">Jornada</span> com IA</h2>
-            <div class="framework-diagram">
-                <div class="flow-item">
-                    <div class="flow-box">
-                        <strong>Fase 1:</strong> PoC de Transcrição Automática (ASR)
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-box">
-                        Testar viabilidade e precisão.
-                    </div>
-                </div>
-                <div class="flow-item">
-                    <div class="flow-box">
-                        <strong>Fase 2:</strong> Protótipo de Player Acessível
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-box">
-                        Integração com avatares Libras.
-                    </div>
-                </div>
-                <div class="flow-item">
-                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.3); border-color: #e91e63; border-width: 2px;">
-                        <strong>Fase 3:</strong> DIO AI Education Framework
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.3); border-color: #e91e63; border-width: 2px;">
-                        Orquestração completa em produção.
-                    </div>
-                </div>
-            </div>
-            <div class="logo-small">
-                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
-            </div>
-        </div>
-
-        <!-- Slide 5: PoC ASR -->
+        <!-- Slide 4: PoC ASR -->
         <div class="slide dark-bg">
             <h2><span class="highlight">Estudo 1:</span> ASR & Transcrição</h2>
             <div class="columns">
@@ -501,7 +456,7 @@
             </div>
         </div>
 
-        <!-- Slide 6: PoC Player -->
+        <!-- Slide 5: PoC Player -->
         <div class="slide dark-bg">
             <h2><span class="highlight">Estudo 2:</span> Player Acessível</h2>
             <div class="columns">
@@ -531,7 +486,7 @@
             </div>
         </div>
 
-        <!-- Slide 7: Insights -->
+        <!-- Slide 6: Insights -->
         <div class="slide dark-bg">
             <h2>Insights dos <span class="highlight">Estudos</span></h2>
             <div class="impact-grid">
@@ -557,7 +512,7 @@
             </div>
         </div>
 
-        <!-- Slide 8: Framework Overview -->
+        <!-- Slide 7: Framework Overview -->
         <div class="slide gradient-bg">
             <div class="center-content">
                 <h1 style="font-size: 64px;">DIO AI Education <span style="color: white;">Framework</span></h1>
@@ -565,7 +520,7 @@
             </div>
         </div>
 
-        <!-- Slide 9: Como Funciona -->
+        <!-- Slide 8: Como Funciona -->
         <div class="slide dark-bg">
             <h2>Arquitetura do <span class="highlight">Framework</span></h2>
             <div class="framework-summary">
@@ -588,7 +543,7 @@
             </div>
         </div>
 
-        <!-- Slide 10: Componentes -->
+        <!-- Slide 9: Componentes -->
         <div class="slide dark-bg">
             <h2>Tecnologias e <span class="highlight">Novas Carreiras</span></h2>
             <div class="columns">
@@ -628,7 +583,7 @@
             </div>
         </div>
 
-        <!-- Slide 11: Impacto -->
+        <!-- Slide 10: Impacto -->
         <div class="slide dark-bg">
             <h2>Impacto e <span class="highlight">Resultados</span></h2>
             <div class="impact-grid">
@@ -654,7 +609,7 @@
             </div>
         </div>
 
-        <!-- Slide 12: Habilidades -->
+        <!-- Slide 11: Habilidades -->
         <div class="slide dark-bg">
             <h2>Habilidades para o <span class="highlight">Futuro</span></h2>
             <div class="columns">
@@ -687,7 +642,7 @@
             </div>
         </div>
 
-        <!-- Slide 13: Conclusão -->
+        <!-- Slide 12: Conclusão -->
         <div class="slide gradient-bg">
             <div class="center-content">
                 <h1 style="font-size: 56px;">O Futuro já Começou</h1>
@@ -713,7 +668,7 @@
     </div>
 
     <div class="slide-number">
-        <span id="current-slide">1</span> / <span id="total-slides">13</span>
+        <span id="current-slide">1</span> / <span id="total-slides">12</span>
     </div>
 
     <div class="controls">
