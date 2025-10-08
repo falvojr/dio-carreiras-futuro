@@ -50,14 +50,6 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #000 100%);
         }
 
-        .logo {
-            position: absolute;
-            bottom: 40px;
-            left: 60px;
-            width: 180px;
-            height: auto;
-        }
-
         .logo-small {
             position: absolute;
             bottom: 30px;
@@ -66,7 +58,7 @@
             height: auto;
         }
 
-        .logo img, .logo-small img {
+        .logo-small img {
             width: 100%;
             height: auto;
         }
@@ -293,7 +285,7 @@
             cursor: pointer;
             background: none;
             border: none;
-            padding: 0;
+            padding: 0 12px;
         }
 
         .modal-close:hover {
@@ -320,18 +312,38 @@
             transform: translateY(-2px);
         }
 
-        .diagram-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .framework-summary {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 16px;
             margin-top: 30px;
         }
 
-        .diagram-container img {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        .framework-summary ul li {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .view-diagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(233, 30, 99, 0.3);
+            border: 2px solid #e91e63;
+            color: white;
+            padding: 14px 28px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-top: 25px;
+        }
+
+        .view-diagram-btn:hover {
+            background: rgba(233, 30, 99, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(233, 30, 99, 0.4);
         }
 
         @media (max-width: 1024px) {
@@ -357,9 +369,6 @@
             <div class="center-content">
                 <h1>IA e Carreiras do Futuro</h1>
                 <p class="subtitle">Tendências, Habilidades e Oportunidades</p>
-            </div>
-            <div class="logo">
-                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
             </div>
         </div>
 
@@ -445,7 +454,9 @@
                     </div>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 5: PoC ASR -->
@@ -467,12 +478,12 @@
                     <p class="highlight" style="font-size: 28px; margin-bottom: 20px;">OpenAI obteve a melhor precisão</p>
                     <button class="view-image-btn" onclick="openModal('modal-lexical')">
                         🔍 Resultados Análise Léxica
-                    </button>&emsp;&emsp;
+                    </button>&emsp;
                     <button class="view-image-btn" onclick="openModal('modal-survey')">
                         🔍 Resultados Survey
                     </button>
                     <h3 style="margin-top: 30px;">Aprendizado</h3>
-                    <p>ASR é um modelo de ML especializado em reconhecimento de fala, cuja acurácia melhorou significativamente com o advento da IA Genrativa</p>
+                    <p>ASR é um modelo de ML especializado em reconhecimento de fala, cuja acurácia melhorou significativamente com o advento da IA Generativa</p>
                 </div>
             </div>
             <div class="logo-small">
@@ -540,20 +551,26 @@
                 <h1 style="font-size: 64px;">DIO AI Education <span style="color: white;">Framework</span></h1>
                 <p class="subtitle">Orquestrando IA para Experiências Educacionais de Alto Impacto</p>
             </div>
-            <div class="logo">
-                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
-            </div>
         </div>
 
         <!-- Slide 9: Como Funciona -->
         <div class="slide dark-bg">
             <h2>Arquitetura do <span class="highlight">Framework</span></h2>
-            <div class="diagram-container">
-                <img src="sources/dio-framework-diagram.png" alt="DIO AI Education Framework Architecture" onerror="this.parentElement.innerHTML='<p style=color:white;>Adicione o diagrama em: sources/dio-framework-diagram.png</p>'">
+            <div class="framework-summary">
+                <ul>
+                    <li><strong>Entrada:</strong> Dados de mercado de parceiros estratégicos sincronizados semanalmente via JIRA</li>
+                    <li><strong>Gestão:</strong> Time de educação prioriza e gerencia o roadmap educacional</li>
+                    <li><strong>Orquestração:</strong> Framework serverless aciona automações via API</li>
+                    <li><strong>IA Capabilities:</strong> OpenAI (multimodal), LangFlow/CrewAI/N8N (agentes), Qdrant (vector DB)</li>
+                    <li><strong>Plataforma:</strong> Integração com LMS para entrega de conteúdo</li>
+                    <li><strong>Saída:</strong> Experiências educacionais enriquecidas com IA (trilhas, badges, transcrições, quizzes)</li>
+                </ul>
+                <div style="text-align: center;">
+                    <button class="view-diagram-btn" onclick="openModal('modal-diagram')">
+                        📊 Visualizar Arquitetura Completa
+                    </button>
+                </div>
             </div>
-            <p style="margin-top: 30px; font-size: 20px; text-align: center; color: rgba(255,255,255,0.8);">
-                Da captação de dados de mercado até a entrega de experiências educacionais impulsionadas por IA
-            </p>
             <div class="logo-small">
                 <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
             </div>
@@ -594,9 +611,6 @@
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 30px; font-size: 22px; text-align: center;">
-                <span class="highlight">Mercado aquecido:</span> Profissionais que dominam essas tecnologias têm salários 40-60% acima da média
-            </p>
             <div class="logo-small">
                 <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
             </div>
@@ -607,20 +621,20 @@
             <h2>Impacto e <span class="highlight">Resultados</span></h2>
             <div class="impact-grid">
                 <div class="impact-item">
-                    <div class="impact-number">100%</div>
-                    <p>Das aulas com transcrições automáticas de alta qualidade</p>
+                    <h3>📈 Acessibilidade</h3>
+                    <p>Transcrições automáticas em todas as aulas da plataforma, ampliando o acesso ao conteúdo educacional</p>
                 </div>
                 <div class="impact-item">
-                    <div class="impact-number">10x</div>
-                    <p>Mais rápido na criação de trilhas de aprendizagem personalizadas</p>
+                    <h3>⚡ Agilidade</h3>
+                    <p>Redução significativa no tempo de criação e curadoria de trilhas de aprendizagem personalizadas</p>
                 </div>
                 <div class="impact-item">
-                    <div class="impact-number">∞</div>
-                    <p>Escalabilidade para milhões de estudantes simultaneamente</p>
+                    <h3>🔄 Automação</h3>
+                    <p>Processos manuais transformados em fluxos automatizados e escaláveis</p>
                 </div>
                 <div class="impact-item">
-                    <div class="impact-number">24/7</div>
-                    <p>Disponibilidade contínua de conteúdo educacional acessível</p>
+                    <h3>🎯 Personalização</h3>
+                    <p>Experiências educacionais adaptadas ao perfil e necessidades de cada estudante</p>
                 </div>
             </div>
             <div class="logo-small">
@@ -674,9 +688,6 @@
                     Comece sua jornada hoje em <span style="color: white; font-weight: 700;">dio.me</span>
                 </p>
             </div>
-            <div class="logo">
-                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
-            </div>
         </div>
     </div>
 
@@ -692,22 +703,29 @@
     <!-- Modals para imagens das PoCs -->
     <div id="modal-lexical" class="modal" onclick="closeModal('modal-lexical')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('modal-lexical')">×</button>
+            <button class="modal-close" onclick="closeModal('modal-lexical')"> × </button>
             <img src="sources/PoC1_LexicalAnalisys.png" alt="Análise Léxica - PoC 1">
         </div>
     </div>
 
     <div id="modal-survey" class="modal" onclick="closeModal('modal-survey')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('modal-survey')">×</button>
+            <button class="modal-close" onclick="closeModal('modal-survey')"> × </button>
             <img src="sources/PoC1_Survey.png" alt="Pesquisa com Usuários - PoC 1">
         </div>
     </div>
 
     <div id="modal-player" class="modal" onclick="closeModal('modal-player')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('modal-player')">×</button>
+            <button class="modal-close" onclick="closeModal('modal-player')"> × </button>
             <img src="sources/PoC2_VideoPlayer.png" alt="Protótipo do Player - PoC 2">
+        </div>
+    </div>
+
+    <div id="modal-diagram" class="modal" onclick="closeModal('modal-diagram')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('modal-diagram')"> × </button>
+            <img src="sources/dio-framework-diagram.png" alt="DIO AI Education Framework Architecture">
         </div>
     </div>
 
