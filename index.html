@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA e Carreiras do Futuro - DIO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #7b2cbf 0%, #c9184a 50%, #000 100%);
+        }
+
+        .dark-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #000 100%);
+        }
+
+        .logo {
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            color: white;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .logo-small {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo .dot {
+            color: #e91e63;
+        }
+
+        h1 {
+            color: white;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: white;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            color: #e91e63;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        p, li {
+            color: white;
+            font-size: 24px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #e91e63;
+            font-weight: 600;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .columns-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 60px;
+            z-index: 1000;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: rgba(233, 30, 99, 0.3);
+            border-color: #e91e63;
+        }
+
+        .slide-number {
+            position: fixed;
+            top: 30px;
+            right: 60px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        .framework-diagram {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .flow-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            gap: 20px;
+        }
+
+        .flow-arrow {
+            color: #e91e63;
+            font-size: 28px;
+        }
+
+        .flow-box {
+            background: rgba(123, 44, 191, 0.2);
+            border: 1px solid #7b2cbf;
+            padding: 12px 20px;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .impact-item {
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.1), rgba(201, 24, 74, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #e91e63;
+        }
+
+        .impact-number {
+            font-size: 48px;
+            color: #e91e63;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Capa -->
+        <div class="slide active gradient-bg">
+            <div class="center-content">
+                <h1>IA e Carreiras do Futuro</h1>
+                <p class="subtitle">Tendências, Habilidades e Oportunidades</p>
+            </div>
+            <div class="logo">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 2: Contexto -->
+        <div class="slide dark-bg">
+            <h2>O Novo Cenário <span class="highlight">Tecnológico</span></h2>
+            <div class="columns-3">
+                <div class="card">
+                    <h3>🚀 Transformação</h3>
+                    <p>A IA está redefinindo profissões e criando novas oportunidades de carreira</p>
+                </div>
+                <div class="card">
+                    <h3>💡 Especialização</h3>
+                    <p>Modelos de ML especializados (ASR, NLP, Visão Computacional) se tornam essenciais</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Foco Humano</h3>
+                    <p>IA libera profissionais para tarefas estratégicas e criativas</p>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 3: Desafio -->
+        <div class="slide dark-bg">
+            <h2>Desafio: <span class="highlight">Acessibilidade</span> na Educação</h2>
+            <div class="columns">
+                <div>
+                    <h3>❌ Antes</h3>
+                    <ul>
+                        <li>Conteúdo limitado para pessoas com deficiência auditiva</li>
+                        <li>Processo manual de criação de legendas</li>
+                        <li>Baixa escalabilidade</li>
+                        <li>Custos elevados de produção</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>✅ Visão</h3>
+                    <ul>
+                        <li>Conteúdo acessível para todos</li>
+                        <li>Automação inteligente com IA</li>
+                        <li>Escalabilidade infinita</li>
+                        <li>Qualidade excepcional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 4: Jornada -->
+        <div class="slide dark-bg">
+            <h2>Nossa <span class="highlight">Jornada</span> com IA</h2>
+            <div class="framework-diagram">
+                <div class="flow-item">
+                    <div class="flow-box">
+                        <strong>Fase 1:</strong> PoC de Transcrição Automática (ASR)
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">
+                        Testar viabilidade e precisão
+                    </div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-box">
+                        <strong>Fase 2:</strong> Protótipo de Player Acessível
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">
+                        Integração com avatares Libras
+                    </div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63;">
+                        <strong>Fase 3:</strong> DIO AI Education Framework
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63;">
+                        Orquestração completa em produção
+                    </div>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 5: PoC ASR -->
+        <div class="slide dark-bg">
+            <h2><span class="highlight">Estudo 1:</span> ASR & Transcrição</h2>
+            <div class="columns">
+                <div>
+                    <h3>Objetivo</h3>
+                    <p>Validar a precisão de diferentes provedores de ASR (Automatic Speech Recognition) para transcrição de aulas em vídeo</p>
+                    <h3 style="margin-top: 30px;">Metodologia</h3>
+                    <ul>
+                        <li>Análise de similaridade léxica</li>
+                        <li>Pesquisa com usuários reais</li>
+                        <li>Comparação OpenAI, Google, IBM, Microsoft, Amazon</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Conclusão</h3>
+                    <p class="highlight" style="font-size: 28px; margin-bottom: 30px;">OpenAI obteve a melhor precisão</p>
+                    <h3>Aprendizado</h3>
+                    <p>ASR é um modelo de ML especializado em reconhecimento de fala - uma habilidade cada vez mais valorizada no mercado</p>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 6: PoC Player -->
+        <div class="slide dark-bg">
+            <h2><span class="highlight">Estudo 2:</span> Player Acessível</h2>
+            <div class="columns">
+                <div>
+                    <h3>Inovação</h3>
+                    <ul>
+                        <li>Integração de transcrições automáticas</li>
+                        <li>Avatares em Libras (Língua Brasileira de Sinais)</li>
+                        <li>Design Universal para acessibilidade</li>
+                        <li>Experiência inclusiva e moderna</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Impacto</h3>
+                    <p>Demonstrou na prática como a IA pode democratizar o acesso à educação de qualidade</p>
+                    <h3 style="margin-top: 30px;">Oportunidade de Carreira</h3>
+                    <p>Profissionais que combinam <span class="highlight">UX, Acessibilidade e IA</span> são altamente valorizados</p>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 7: Insights -->
+        <div class="slide dark-bg">
+            <h2>Insights dos <span class="highlight">Estudos</span></h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h3>🎯 Precisão é Crítica</h3>
+                    <p>Comparar provedores e escolher a melhor solução faz diferença real na experiência do usuário</p>
+                </div>
+                <div class="impact-item">
+                    <h3>🔄 Integração é Chave</h3>
+                    <p>Tecnologias isoladas têm valor limitado - a orquestração multiplica o impacto</p>
+                </div>
+                <div class="impact-item">
+                    <h3>👥 Humanos no Centro</h3>
+                    <p>IA automatiza tarefas repetitivas, liberando pessoas para inovação e estratégia</p>
+                </div>
+                <div class="impact-item">
+                    <h3>📈 Escala Necessária</h3>
+                    <p>Para impacto real, precisávamos de um framework robusto e escalável</p>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 8: Framework Overview -->
+        <div class="slide gradient-bg">
+            <div class="center-content">
+                <h1 style="font-size: 64px;">DIO AI Education <span class="highlight">Framework</span></h1>
+                <p class="subtitle">Orquestrando IA para Experiências Educacionais de Alto Impacto</p>
+            </div>
+            <div class="logo">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 9: Como Funciona -->
+        <div class="slide dark-bg">
+            <h2>Arquitetura do <span class="highlight">Framework</span></h2>
+            <div style="font-size: 20px;">
+                <div class="flow-item">
+                    <div class="flow-box">📊 Strategic Partners (Dados de Mercado)</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">📋 JIRA (Roadmap Educacional)</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-box">👥 Education Team</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63;">🤖 DIO AI Framework (Serverless API)</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-box" style="background: rgba(123, 44, 191, 0.15); border-color: #7b2cbf;">🧠 OpenAI (Text, Audio, Images)</div>
+                    <div class="flow-box" style="background: rgba(123, 44, 191, 0.15); border-color: #7b2cbf;">🤝 CrewAI + LangFlow (Agentes)</div>
+                    <div class="flow-box" style="background: rgba(123, 44, 191, 0.15); border-color: #7b2cbf;">💾 Qdrant (Vector DB)</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-box">🎓 DIO Platform (LMS)</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box" style="background: rgba(40, 167, 69, 0.2); border-color: #28a745;">✨ AI-Driven Learning (Trilhas, Scripts, Badges, Quizzes)</div>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 10: Componentes -->
+        <div class="slide dark-bg">
+            <h2>Capacidades de <span class="highlight">IA</span></h2>
+            <div class="columns-3">
+                <div class="card">
+                    <h3>🎨 OpenAI Services</h3>
+                    <p>Geração de texto, áudio e imagens para conteúdos educacionais personalizados</p>
+                </div>
+                <div class="card">
+                    <h3>🤖 Agentic AI</h3>
+                    <p>CrewAI + LangFlow para orquestração de agentes inteligentes colaborativos</p>
+                </div>
+                <div class="card">
+                    <h3>🗄️ Vector Database</h3>
+                    <p>Qdrant para busca semântica e RAG (Retrieval-Augmented Generation)</p>
+                </div>
+            </div>
+            <p style="margin-top: 50px; font-size: 22px;">
+                <span class="highlight">Carreira em Alta:</span> Engenheiros que dominam orquestração de múltiplos modelos de IA e arquitetura serverless estão entre os mais procurados
+            </p>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 11: Impacto -->
+        <div class="slide dark-bg">
+            <h2>Impacto e <span class="highlight">Resultados</span></h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number">100%</div>
+                    <p>Das aulas com transcrições automáticas de alta qualidade</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">10x</div>
+                    <p>Mais rápido na criação de trilhas de aprendizagem personalizadas</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">∞</div>
+                    <p>Escalabilidade para milhões de estudantes simultaneamente</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">24/7</div>
+                    <p>Disponibilidade contínua de conteúdo educacional acessível</p>
+                </div>
+            </div>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 12: Habilidades -->
+        <div class="slide dark-bg">
+            <h2>Habilidades para o <span class="highlight">Futuro</span></h2>
+            <div class="columns">
+                <div>
+                    <h3>🛠️ Técnicas</h3>
+                    <ul>
+                        <li>Orquestração de APIs de IA</li>
+                        <li>Engenharia de Prompts</li>
+                        <li>RAG e Vector Databases</li>
+                        <li>Agentic AI e LLM Ops</li>
+                        <li>Arquiteturas Serverless</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🧠 Humanas</h3>
+                    <ul>
+                        <li>Pensamento crítico e ético</li>
+                        <li>Design de experiências</li>
+                        <li>Comunicação clara</li>
+                        <li>Resolução criativa de problemas</li>
+                        <li>Visão estratégica</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 40px; font-size: 26px; text-align: center;">
+                <span class="highlight">A combinação é o diferencial:</span> IA amplifica capacidades humanas, não as substitui
+            </p>
+            <div class="logo-small">dio<span class="dot">.</span></div>
+        </div>
+
+        <!-- Slide 13: Conclusão -->
+        <div class="slide gradient-bg">
+            <div class="center-content">
+                <h1 style="font-size: 56px;">O Futuro já Começou</h1>
+                <p class="subtitle" style="font-size: 28px; max-width: 900px; margin: 40px auto;">
+                    A IA está criando novas carreiras e transformando as existentes. <br><br>
+                    <span class="highlight">Profissionais que dominam tanto tecnologia quanto habilidades humanas</span> 
+                    serão os protagonistas dessa revolução.
+                </p>
+                <p style="margin-top: 50px; font-size: 32px;">
+                    Comece sua jornada hoje em <span class="highlight">dio.me</span>
+                </p>
+            </div>
+            <div class="logo">dio<span class="dot">.</span></div>
+        </div>
+    </div>
+
+    <div class="slide-number">
+        <span id="current-slide">1</span> / <span id="total-slides">13</span>
+    </div>
+
+    <div class="controls">
+        <button id="prev">← Anterior</button>
+        <button id="next">Próximo →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            }
+        });
+    </script>
+</body>
+</html>
