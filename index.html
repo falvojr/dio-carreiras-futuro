@@ -54,24 +54,21 @@
             position: absolute;
             bottom: 40px;
             left: 60px;
-            color: white;
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: -2px;
+            width: 180px;
+            height: auto;
         }
 
         .logo-small {
             position: absolute;
             bottom: 30px;
             left: 60px;
-            color: white;
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: -1px;
+            width: 120px;
+            height: auto;
         }
 
-        .logo .dot {
-            color: #e91e63;
+        .logo img, .logo-small img {
+            width: 100%;
+            height: auto;
         }
 
         h1 {
@@ -198,84 +195,6 @@
             font-size: 18px;
         }
 
-        .image-popup-trigger {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            color: #e91e63;
-            font-size: 18px;
-            padding: 8px 16px;
-            background: rgba(233, 30, 99, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(233, 30, 99, 0.3);
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-
-        .image-popup-trigger:hover {
-            background: rgba(233, 30, 99, 0.2);
-            border-color: #e91e63;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 8px;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            cursor: pointer;
-            background: rgba(233, 30, 99, 0.3);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .close-modal:hover {
-            background: rgba(233, 30, 99, 0.5);
-        }
-
-        #mermaid-diagram {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-
         .flow-item {
             display: flex;
             align-items: center;
@@ -294,6 +213,7 @@
             padding: 12px 20px;
             border-radius: 8px;
             flex: 1;
+            color: white;
         }
 
         .impact-grid {
@@ -331,6 +251,103 @@
             color: rgba(255, 255, 255, 0.8);
             margin-top: 20px;
         }
+
+        /* Modal/Popup styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            color: #e91e63;
+        }
+
+        .view-image-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(233, 30, 99, 0.2);
+            border: 2px solid #e91e63;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .view-image-btn:hover {
+            background: rgba(233, 30, 99, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 50px;
+            }
+            h1 {
+                font-size: 48px;
+            }
+            h2 {
+                font-size: 40px;
+            }
+            .columns, .columns-3 {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -341,7 +358,9 @@
                 <h1>IA e Carreiras do Futuro</h1>
                 <p class="subtitle">Tendências, Habilidades e Oportunidades</p>
             </div>
-            <div class="logo">dio<span class="dot">.</span></div>
+            <div class="logo">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 2: Contexto -->
@@ -361,7 +380,9 @@
                     <p>IA libera profissionais para tarefas estratégicas e criativas</p>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 3: Desafio -->
@@ -387,7 +408,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 4: Jornada -->
@@ -395,29 +418,29 @@
             <h2>Nossa <span class="highlight">Jornada</span> com IA</h2>
             <div class="framework-diagram">
                 <div class="flow-item">
-                    <div class="flow-box" style="color: white;">
+                    <div class="flow-box">
                         <strong>Fase 1:</strong> PoC de Transcrição Automática (ASR)
                     </div>
                     <span class="flow-arrow">→</span>
-                    <div class="flow-box" style="color: white;">
+                    <div class="flow-box">
                         Testar viabilidade e precisão
                     </div>
                 </div>
                 <div class="flow-item">
-                    <div class="flow-box" style="color: white;">
+                    <div class="flow-box">
                         <strong>Fase 2:</strong> Protótipo de Player Acessível
                     </div>
                     <span class="flow-arrow">→</span>
-                    <div class="flow-box" style="color: white;">
+                    <div class="flow-box">
                         Integração com avatares Libras
                     </div>
                 </div>
                 <div class="flow-item">
-                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63; color: white;">
+                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63;">
                         <strong>Fase 3:</strong> DIO AI Education Framework
                     </div>
                     <span class="flow-arrow">→</span>
-                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63; color: white;">
+                    <div class="flow-box" style="background: rgba(233, 30, 99, 0.2); border-color: #e91e63;">
                         Orquestração completa em produção
                     </div>
                 </div>
@@ -436,23 +459,25 @@
                     <ul>
                         <li>Análise de similaridade léxica</li>
                         <li>Pesquisa com usuários reais</li>
-                        <li>Comparação OpenAI, Google, IBM, Microsoft, Amazon</li>
+                        <li>OpenAI, Google, IBM, Microsoft e Amazon</li>
                     </ul>
                 </div>
                 <div>
                     <h3>Conclusão</h3>
-                    <p class="highlight" style="font-size: 28px; margin-bottom: 30px;">OpenAI obteve a melhor precisão</p>
-                    <div class="image-popup-trigger" onclick="openModal('poc1-lexical')">
-                        🔍 Ver Análise Léxica
-                    </div>
-                    <div class="image-popup-trigger" onclick="openModal('poc1-survey')">
-                        🔍 Ver Resultados da Pesquisa
-                    </div>
+                    <p class="highlight" style="font-size: 28px; margin-bottom: 20px;">OpenAI obteve a melhor precisão</p>
+                    <button class="view-image-btn" onclick="openModal('modal-lexical')">
+                        🔍 Resultados Análise Léxica
+                    </button>&emsp;&emsp;
+                    <button class="view-image-btn" onclick="openModal('modal-survey')">
+                        🔍 Resultados Survey
+                    </button>
                     <h3 style="margin-top: 30px;">Aprendizado</h3>
-                    <p>ASR é um modelo de ML especializado em reconhecimento de fala - uma habilidade cada vez mais valorizada no mercado</p>
+                    <p>ASR é um modelo de ML especializado em reconhecimento de fala, cuja acurácia melhorou significativamente com o advento da IA Genrativa</p>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 6: PoC Player -->
@@ -467,18 +492,20 @@
                         <li>Design Universal para acessibilidade</li>
                         <li>Experiência inclusiva e moderna</li>
                     </ul>
-                    <div class="image-popup-trigger" onclick="openModal('poc2-player')">
-                        🔍 Ver Protótipo do Player
-                    </div>
                 </div>
                 <div>
                     <h3>Impacto</h3>
                     <p>Demonstrou na prática como a IA pode democratizar o acesso à educação de qualidade</p>
+                    <button class="view-image-btn" onclick="openModal('modal-player')">
+                        🔍 Ver Protótipo do Player
+                    </button>
                     <h3 style="margin-top: 30px;">Oportunidade de Carreira</h3>
                     <p>Profissionais que combinam <span class="highlight">UX, Acessibilidade e IA</span> são altamente valorizados</p>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 7: Insights -->
@@ -502,46 +529,77 @@
                     <p>Para impacto real, precisávamos de um framework robusto e escalável</p>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 8: Framework Overview -->
         <div class="slide gradient-bg">
             <div class="center-content">
-                <h1 style="font-size: 64px;">DIO AI Education <span style="color: white; font-weight: 900;">Framework</span></h1>
+                <h1 style="font-size: 64px;">DIO AI Education <span style="color: white;">Framework</span></h1>
                 <p class="subtitle">Orquestrando IA para Experiências Educacionais de Alto Impacto</p>
             </div>
-            <div class="logo">dio<span class="dot">.</span></div>
+            <div class="logo">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 9: Como Funciona -->
         <div class="slide dark-bg">
             <h2>Arquitetura do <span class="highlight">Framework</span></h2>
-            <div id="mermaid-diagram"></div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="diagram-container">
+                <img src="sources/dio-framework-diagram.png" alt="DIO AI Education Framework Architecture" onerror="this.parentElement.innerHTML='<p style=color:white;>Adicione o diagrama em: sources/dio-framework-diagram.png</p>'">
+            </div>
+            <p style="margin-top: 30px; font-size: 20px; text-align: center; color: rgba(255,255,255,0.8);">
+                Da captação de dados de mercado até a entrega de experiências educacionais impulsionadas por IA
+            </p>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 10: Componentes -->
         <div class="slide dark-bg">
-            <h2>Capacidades de <span class="highlight">IA</span></h2>
-            <div class="columns-3">
-                <div class="card">
-                    <h3>🎨 OpenAI Services</h3>
-                    <p>Geração de texto, áudio e imagens para conteúdos educacionais personalizados</p>
+            <h2>Tecnologias e <span class="highlight">Novas Carreiras</span></h2>
+            <div class="columns">
+                <div>
+                    <h3>🛠️ Stack Tecnológica</h3>
+                    <div class="card" style="margin-bottom: 15px;">
+                        <h3 style="font-size: 20px;">🎨 AI Services (OpenAI)</h3>
+                        <p style="font-size: 17px;">Geração multimodal: texto, áudio e imagens para conteúdos personalizados</p>
+                    </div>
+                    <div class="card" style="margin-bottom: 15px;">
+                        <h3 style="font-size: 20px;">🤖 Agentic AI (LangFlow, CrewAI, N8N)</h3>
+                        <p style="font-size: 17px;">Orquestração de agentes inteligentes que colaboram e tomam decisões</p>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-size: 20px;">🗄️ Vector DB (Qdrant)</h3>
+                        <p style="font-size: 17px;">Busca semântica e RAG para respostas contextualizadas</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>🤖 Agentic AI</h3>
-                    <p>LangFlow, CrewAI e N8N para orquestração de agentes inteligentes colaborativos</p>
-                </div>
-                <div class="card">
-                    <h3>🗄️ Vector Database</h3>
-                    <p>Qdrant para busca semântica e RAG (Retrieval-Augmented Generation)</p>
+                <div>
+                    <h3>🚀 Carreiras Emergentes na DIO</h3>
+                    <div class="card" style="margin-bottom: 15px;">
+                        <h3 style="font-size: 20px;">💼 AI Engineer</h3>
+                        <p style="font-size: 17px;">Desenvolve e implementa sistemas de IA end-to-end, desde a coleta de dados até o deploy em produção</p>
+                    </div>
+                    <div class="card" style="margin-bottom: 15px;">
+                        <h3 style="font-size: 20px;">⚡ AI Automation Developer</h3>
+                        <p style="font-size: 17px;">Cria fluxos automatizados inteligentes que integram IA em processos de negócio</p>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-size: 20px;">🤝 AI Agents Developer</h3>
+                        <p style="font-size: 17px;">Especialista em criar agentes autônomos que interagem, aprendem e executam tarefas complexas</p>
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 50px; font-size: 22px;">
-                <span class="highlight">Carreira em Alta:</span> Engenheiros que dominam orquestração de múltiplos modelos de IA e arquitetura serverless estão entre os mais procurados
+            <p style="margin-top: 30px; font-size: 22px; text-align: center;">
+                <span class="highlight">Mercado aquecido:</span> Profissionais que dominam essas tecnologias têm salários 40-60% acima da média
             </p>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 11: Impacto -->
@@ -565,7 +623,9 @@
                     <p>Disponibilidade contínua de conteúdo educacional acessível</p>
                 </div>
             </div>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 12: Habilidades -->
@@ -596,7 +656,9 @@
             <p style="margin-top: 40px; font-size: 26px; text-align: center;">
                 <span class="highlight">A combinação é o diferencial:</span> IA amplifica capacidades humanas, não as substitui
             </p>
-            <div class="logo-small">dio<span class="dot">.</span></div>
+            <div class="logo-small">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
 
         <!-- Slide 13: Conclusão -->
@@ -605,36 +667,16 @@
                 <h1 style="font-size: 56px;">O Futuro já Começou</h1>
                 <p class="subtitle" style="font-size: 28px; max-width: 900px; margin: 40px auto;">
                     A IA está criando novas carreiras e transformando as existentes. <br><br>
-                    <span style="color: white; font-weight: 700;">Profissionais que dominam tanto tecnologia quanto habilidades humanas</span> 
+                    <span style="color: white; font-weight: 600;">Profissionais que dominam tanto tecnologia quanto habilidades humanas</span> 
                     serão os protagonistas dessa revolução.
                 </p>
-                <p style="margin-top: 50px; font-size: 32px;">
+                <p style="margin-top: 50px; font-size: 32px; color: white;">
                     Comece sua jornada hoje em <span style="color: white; font-weight: 700;">dio.me</span>
                 </p>
             </div>
-            <div class="logo">dio<span class="dot">.</span></div>
-        </div>
-    </div>
-
-    <!-- Modais para as imagens -->
-    <div id="modal-poc1-lexical" class="modal" onclick="closeModal('poc1-lexical')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal('poc1-lexical')">&times;</span>
-            <img src="sources/PoC1_LexicalAnalisys.png" alt="Análise Léxica PoC 1">
-        </div>
-    </div>
-
-    <div id="modal-poc1-survey" class="modal" onclick="closeModal('poc1-survey')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal('poc1-survey')">&times;</span>
-            <img src="sources/PoC1_Survey.png" alt="Survey PoC 1">
-        </div>
-    </div>
-
-    <div id="modal-poc2-player" class="modal" onclick="closeModal('poc2-player')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal('poc2-player')">&times;</span>
-            <img src="sources/PoC2_VideoPlayer.png" alt="Video Player PoC 2">
+            <div class="logo">
+                <img src="sources/dio-logo.png" alt="DIO" onerror="this.style.display='none'">
+            </div>
         </div>
     </div>
 
@@ -647,49 +689,27 @@
         <button id="next">Próximo →</button>
     </div>
 
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                primaryColor: '#ede7f6',
-                primaryTextColor: '#212121',
-                primaryBorderColor: '#673ab7',
-                lineColor: '#673ab7',
-                secondaryColor: '#e8f5e9',
-                tertiaryColor: '#d1c4e9'
-            }
-        });
+    <!-- Modals para imagens das PoCs -->
+    <div id="modal-lexical" class="modal" onclick="closeModal('modal-lexical')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('modal-lexical')">×</button>
+            <img src="sources/PoC1_LexicalAnalisys.png" alt="Análise Léxica - PoC 1">
+        </div>
+    </div>
 
-        const mermaidCode = `graph TB
-    Partners["Strategic Partners Job Data<br/>(Careers & In-Demand Skills)"]:::tech
-    Partners-->|"Weekly Sync"|JIRA["JIRA Board<br/>(Education Roadmap)"]:::tech
-    Team["Education Team"]<-->|"Prioritize & Manage"|JIRA:::edu
-    JIRA-->|"Trigger Automations"|Framework["DIO AI Education Framework<br/>(Serverless API)"]:::tech_dark
-    subgraph AICAPABILITIES["AI Capabilities"]
-        direction LR
-        OpenAI["AI Services<br/>(OpenAI)"]:::tech
-        LangFlow["Agentic AI<br/>(LangFlow, CrewAI e N8N)"]:::tech
-        Qdrant["Vector DB<br/>(QDrant)"]:::tech
-    end
-    Framework-->|"API"|OpenAI
-    Framework-->|"API"|LangFlow
-    Framework-->|"API"|Qdrant
-    Framework-->|"API"|Platform["DIO Education Platform<br/>(LMS & Content Delivery)"]:::edu
-    Platform-->|"Delivers"|Learning["AI-Driven Learning Experiences<br/>(Learning Paths, Badges, Transcripts, Quizzes)"]:::edu
-    classDef tech fill:#ede7f6,stroke:#673ab7,color:#212121;
-    classDef tech_dark fill:#d1c4e9,stroke:#4527a0,color:#212121;
-    classDef edu fill:#e8f5e9,stroke:#388e3c,color:#212121;
-    class Partners,JIRA,LangFlow,OpenAI,Qdrant tech
-    class Framework tech_dark
-    class Platform,Team,Learning edu`;
+    <div id="modal-survey" class="modal" onclick="closeModal('modal-survey')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('modal-survey')">×</button>
+            <img src="sources/PoC1_Survey.png" alt="Pesquisa com Usuários - PoC 1">
+        </div>
+    </div>
 
-        const diagramDiv = document.getElementById('mermaid-diagram');
-        const { svg } = await mermaid.render('mermaid-graph', mermaidCode);
-        diagramDiv.innerHTML = svg;
-    </script>
+    <div id="modal-player" class="modal" onclick="closeModal('modal-player')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('modal-player')">×</button>
+            <img src="sources/PoC2_VideoPlayer.png" alt="Protótipo do Player - PoC 2">
+        </div>
+    </div>
 
     <script>
         let currentSlide = 0;
@@ -705,18 +725,6 @@
             document.getElementById('current-slide').textContent = currentSlide + 1;
         }
 
-        function openModal(id) {
-            document.getElementById('modal-' + id).classList.add('active');
-        }
-
-        function closeModal(id) {
-            document.getElementById('modal-' + id).classList.remove('active');
-        }
-
-        // Expor funções globalmente para onclick
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-
         document.getElementById('next').addEventListener('click', () => {
             showSlide(currentSlide + 1);
         });
@@ -731,12 +739,24 @@
             } else if (e.key === 'ArrowLeft') {
                 showSlide(currentSlide - 1);
             } else if (e.key === 'Escape') {
-                // Fechar todos os modais
-                document.querySelectorAll('.modal').forEach(modal => {
-                    modal.classList.remove('active');
-                });
+                closeAllModals();
             }
         });
+
+        // Funções para modais
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
     </script>
 </body>
 </html>
